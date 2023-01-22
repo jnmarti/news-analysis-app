@@ -13,6 +13,10 @@ datasets = "^2.8.0"
 nlplot = "^1.6.0"
 dateparser = "^1.1.6"
 seaborn = "^0.12.2"
+spacy = "^3.5.0"
+
+[tool.poetry.dependencies.es_core_news_md]
+url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_md-3.5.0/es_core_news_md-3.5.0.tar.gz"
 
 
 [build-system]
