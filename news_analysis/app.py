@@ -7,19 +7,11 @@ import nlplot
 
 import streamlit as st
 
+from news_analysis.utils.dataset_utils import text_to_date, get_dataset
+
 dataset_id = "justinian336/salvadoran-news"
 
 st.markdown("## News Analysis")
-
-def text_to_date(text):
-    return dateparser.parse(text)
-
-def get_dataset(dataset_id):
-    dataset = load_dataset(dataset_id)
-    df = dataset["train"].to_pandas()
-    df["category_name"] = df["category"].apply(dataset["train"].features["category"].int2str)
-    # df["date"] = df["date"].apply(text_to_date)
-    return df
 
 if st.session_state.get("df") is None:
     with st.spinner("Loading dataset..."):
