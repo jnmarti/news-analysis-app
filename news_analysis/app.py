@@ -24,7 +24,7 @@ else:
     df = st.session_state["df"]
 
 start_date = st.sidebar.date_input(label="Start Date", value=df["date"].min(), max_value=df["date"].max())
-end_date = st.sidebar.date_input(label="Start Date", value=df["date"].max(), min_value=start_date)
+end_date = st.sidebar.date_input(label="End Date", value=df["date"].max(), min_value=start_date)
 
 df = df[(df["date"] >= start_date) & (df["date"] <= end_date)]
 
