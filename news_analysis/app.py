@@ -1,4 +1,5 @@
 import dateparser
+import textwrap
 from datasets import load_dataset
 
 import matplotlib.pyplot as plt
@@ -53,3 +54,11 @@ with tab1:
     )
 
     st.plotly_chart(fig_title_bigram)
+
+with tab2:
+    for _, row in df.head(10).iterrows():
+        st.markdown(f"""<div><a href="{row['link']}">{row['title']}</a><div>""", unsafe_allow_html=True)
+        st.markdown(f"**{row['category_name']}**")
+        st.markdown(f"**{row['date']}**")
+        st.markdown(f"{textwrap.shorten(row['content'], width=500, placeholder='...')}")
+        st.markdown("---")
