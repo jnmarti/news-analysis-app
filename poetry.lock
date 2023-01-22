@@ -627,14 +627,14 @@ files = [
 ]
 
 [[package]]
-name = "es-core-news-sm"
+name = "es-core-news-md"
 version = "3.5.0"
 description = "Spanish pipeline optimized for CPU. Components: tok2vec, morphologizer, parser, senter, ner, attribute_ruler, lemmatizer."
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "es_core_news_sm-3.5.0.tar.gz", hash = "sha256:ca34941919517e5144ee2990f133f9affd9ed6b4993f9fa882330fcbbb783d99"},
+    {file = "es_core_news_md-3.5.0.tar.gz", hash = "sha256:032b66e7dfbc2d36909a75fbf14997214c06074603836d73c2501aed5bd4bdac"},
 ]
 
 [package.dependencies]
@@ -642,7 +642,7 @@ spacy = ">=3.5.0,<3.6.0"
 
 [package.source]
 type = "url"
-url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.5.0/es_core_news_sm-3.5.0.tar.gz"
+url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_md-3.5.0/es_core_news_md-3.5.0.tar.gz"
 
 [[package]]
 name = "executing"
@@ -3251,4 +3251,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "8785b5144086e6e345f161b73a680977a0ea80fbe52990da19315767f17eeaf1"
+content-hash = "27f99735bbca26f808fa722c061a575ced4d2b9e901c846e9036407fddf86c9b"

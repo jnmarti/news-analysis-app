@@ -1,6 +1,6 @@
 import spacy
 
-nlp = spacy.load("es_core_news_sm")
+nlp = spacy.load("es_core_news_md")
 
 def get_entities(df):
     docs = nlp.pipe(df["content"])
