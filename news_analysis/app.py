@@ -1,3 +1,4 @@
+from math import ceil
 import dateparser
 import textwrap
 from datasets import load_dataset
@@ -8,7 +9,7 @@ import nlplot
 
 import streamlit as st
 
-from news_analysis.utils.dataset_utils import get_dataset
+from news_analysis.utils.dataset_utils import get_dataset, get_page
 
 dataset_id = "justinian336/salvadoran-news"
 
@@ -56,7 +57,19 @@ with tab1:
     st.plotly_chart(fig_title_bigram)
 
 with tab2:
-    for _, row in df.head(10).iterrows():
+
+    if st.session_state.get("page") is None:
+        st.session_state["page"] = 0
+
+    page = st.selectbox(
+        label="Page",
+        index=st.session_state["page"],
+        options=list(range(1, ceil(len(df)/10)))
+        )
+
+    page_df = get_page(df, page, 10)
+    
+    for _, row in page_df.iterrows():
         st.markdown(f"""<div><a href="{row['link']}">{row['title']}</a><div>""", unsafe_allow_html=True)
         st.markdown(f"**{row['category_name']}**")
         st.markdown(f"**{row['date']}**")
