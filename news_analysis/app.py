@@ -10,6 +10,7 @@ import nlplot
 import streamlit as st
 
 from news_analysis.utils.dataset_utils import get_dataset, get_page
+from news_analysis.utils.nlp_utils import get_entities
 
 dataset_id = "justinian336/salvadoran-news"
 
@@ -68,10 +69,17 @@ with tab2:
         )
 
     page_df = get_page(df, page, 10)
+    page_df["entities"] = get_entities(page_df)
     
     for _, row in page_df.iterrows():
-        st.markdown(f"""<div><a href="{row['link']}">{row['title']}</a><div>""", unsafe_allow_html=True)
+        st.markdown(f"""<h2><a href="{row['link']}">{row['title']}</a></h2>""", unsafe_allow_html=True)
+        image_src = row["image_src"].replace("&w=30", "&w=300")
+        st.image(image_src)
         st.markdown(f"**{row['category_name']}**")
         st.markdown(f"**{row['date']}**")
-        st.markdown(f"{textwrap.shorten(row['content'], width=500, placeholder='...')}")
+        st.markdown(f"{textwrap.shorten(row['content'], width=300, placeholder='...')}")
+        if len(row["entities"]) > 0:
+            with st.expander(label="Entities", expanded=True):
+                for ent, lab in row["entities"]:
+                    st.markdown(f"- {ent} ({lab})")
         st.markdown("---")
